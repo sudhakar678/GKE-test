@@ -29,5 +29,9 @@ steps:
     args:
       - '-c'
       - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/cloudside-academy/attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id="$$DEMO" --validate
-
+    secretEnv: ['DEMO']
+  availableSecrets:
+    secretManager:
+    - versionName: projects/769170094354/secrets/DEMO/versions/1
+      env: 'DEMO'
  
