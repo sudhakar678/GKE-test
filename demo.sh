@@ -1,6 +1,6 @@
 #!/bin/bash
   
-export DIGEST= (gcloud container images describe  us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$_TAG  --format 'value(image_summary.digest)')
+export DIGEST= gcloud container images describe  us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$_TAG  --format 'value(image_summary.digest)'
 echo $DIGEST
 
 gcloud container binauthz create-signature-payload \
