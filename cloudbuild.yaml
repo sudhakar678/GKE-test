@@ -3,7 +3,7 @@ steps:
     args:
       - '-c'
       - >-
-        gcloud container clusters get-credentials test-cluster --zone
+        gcloud container clusters get-credentials test-cluster-1 --zone
         us-central1-a --project cloudside-academy  
     entrypoint: bash
   - name: gcr.io/cloud-builders/gcloud
