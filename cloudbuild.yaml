@@ -29,5 +29,10 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     args:
       - '-c'
+      - cat generated_payload.json
+    entrypoint: bash
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
       - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/cloudside-academy/attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id=./ec_pubilc.pem --validate
     entrypoint: bash  
