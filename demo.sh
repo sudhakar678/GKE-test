@@ -4,6 +4,6 @@ gcloud container images describe us-central1-docker.pkg.dev/cloudside-academy/su
 
 ls
 
-cat sha
+cat index.html
 
 
