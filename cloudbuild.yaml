@@ -38,5 +38,5 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     args:
       - '-c'
-      - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/cloudside-academy/attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id=./ec_pubilc.pem --validate
+      - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/cloudside-academy/attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id="ni:///sha-256;k5eo3m8DORHBWYll-27K6zzVc5qooHUd3VPXeX4sjAo" --validate
     entrypoint: bash  
