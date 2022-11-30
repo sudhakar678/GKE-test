@@ -1,6 +1,6 @@
 #!/bin/bash
   
-IMAGE_PATH="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$BUILD_ID"
+IMAGE_PATH="us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$GITHUB_SHA"
 IMAGE_TO_ATTEST=${IMAGE_PATH}
 
 gcloud container binauthz create-signature-payload \
