@@ -22,4 +22,9 @@ steps:
       - export DIGEST=$(awk 'NR==1{print $1}' sha)
       - echo $_DIGEST
     entrypoint: bash
-  
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
+      - gcloud container binauthz create-signature-payload 
+        --artifact-url=us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$_DIGEST > ./generated_payload.json
+    entrypoint: bash
