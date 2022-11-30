@@ -30,5 +30,5 @@ steps:
     args:
       - '-c'
       - gcloud container binauthz create-signature-payload 
-        --artifact-url=us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$DIGEST > ./generated_payload.json
+        --artifact-url=us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$_DIGEST > ./generated_payload.json
     entrypoint: bash
