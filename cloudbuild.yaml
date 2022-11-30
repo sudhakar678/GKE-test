@@ -29,7 +29,7 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     args:
       - '-c'
-      - cat generated_payload.json
+      - cat ec_signature
     entrypoint: bash
   - name: gcr.io/cloud-builders/gcloud
     args:
