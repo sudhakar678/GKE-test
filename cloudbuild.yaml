@@ -24,4 +24,7 @@ steps:
     args:
       - '-c'
       - gcloud container binauthz create-signature-payload --artifact-url=us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image@$(awk 'NR==1{print $1}' sha) > ./generated_payload.json
+      - openssl dgst -sha256 -sign ./ec_private.pem ./generated_payload.json > ./ec_signature
+      - gcloud container binauthz attestations create --project=$_PROJECT_ID --artifact-url=$_IMAGE_TO_ATTEST --attestor=projects/$_PROJECT_ID/attestors/$_ATTESTOR_NAME --signature-file=/tmp/ec_signature --public-key-id=ec_public.pem --validate
     entrypoint: bash
+    
