@@ -23,3 +23,8 @@ steps:
       - ls
       - cat sha
     entrypoint: bash
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
+      - cat sha
+    entrypoint: bash
