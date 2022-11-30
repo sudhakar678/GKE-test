@@ -19,13 +19,5 @@ steps:
     args:
       - '-c'
       - >-
-        export DIGEST= gcloud container images describe us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$_TAG  --format 'value(image_summary.digest)'
-      - echo DIGEST
-    entrypoint: bash
-  - name: gcr.io/cloud-builders/gcloud
-    args:
-      - '-c'
-      - >-
-        gcloud container binauthz create-signature-payload
-        --artifact-url=$_IMAGE_PATH@sha256:$_DIGEST > ./generated_payload.json 
+        sh demo.sh
     entrypoint: bash
