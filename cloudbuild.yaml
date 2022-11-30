@@ -24,6 +24,7 @@ steps:
     args:
       - '-c'
       - export DIGEST=$(awk 'NR==1{print $1}' sha)
+      - echo $DIGEST
     entrypoint: bash
   - name: gcr.io/cloud-builders/gcloud
     args:
