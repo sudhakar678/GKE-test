@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: binary-test-1
-        image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
+        image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image@(awk 'NR==1{print $1}' sha)
         ports:
          - containerPort: 8080
 ---
