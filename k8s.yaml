@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: binary-test
-        image: us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$_TAG
+        image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
         ports:
           - containerPort: 80
         imagePullPolicy: Always
