@@ -3,21 +3,19 @@ kind: Deployment
 metadata:
   name: binary-test
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      run: binary-test
+      app: binary-test
   template:
     metadata:
       labels:
-        run: binary-test
+        app: binary-test
     spec:
       containers:
-      - name: binary-test
-        image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
-        ports:
-          - containerPort: 80
-        imagePullPolicy: Always
+        - name: binary-test
+          image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
