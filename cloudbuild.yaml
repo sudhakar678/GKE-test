@@ -34,13 +34,13 @@ steps:
     args:
       - '-c'
       - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/$_PROJECT_ID/attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id="$_PUBILC_KEY_ID" --validate
-      - cat k8s.yaml && grep us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image' && | awk -F '{print $0=$3}')  > tag
+      
    entrypoint: bash
   - name: gcr.io/cloud-builders/ubuntu
     args:
       - '-c'
  #     - export tag=(cat k8s.yaml | grep 'us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:' | awk -F: '{print $0=$3}')
-       - cat k8s.yaml
+       - cat k8s.yaml && grep us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image' && | awk -F '{print $0=$3}')  > tag
      entrypoint: bash
  # - name: gcr.io/cloud-builders/gke-deploy
  #   args:
