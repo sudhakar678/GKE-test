@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: binary-test
+  name: binary-test-1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: binary-test
+      app: binary-test-1
       env: dev
   template:
     metadata:
-      name: binary-test
+      name: binary-test-1
       labels:
-        app: binary-test
+        app: binary-test-1
         env: dev
     spec:
       containers:
-      - name: binary-test
+      - name: binary-test-1
         image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
         ports:
          - containerPort: 8080
@@ -24,9 +24,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: binary-test
+  name: binary-test-1
   labels:
-    run: binary-test
+    run: binary-test-1
 spec:
   type: LoadBalancer
   ports:
@@ -35,4 +35,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    run: binary-test
+    run: binary-test-1
