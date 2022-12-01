@@ -38,7 +38,8 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     args:
       - '-c'
-      - cat k8s.yaml
+      - tag=$(cat k8s.yaml | grep 'us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:' | awk -F: '{print $0=$3}')
+      - sed -i 's/'"${tag}"'/'"$_TAG"'/' k8s.yaml
     entrypoint: bash
  # - name: gcr.io/cloud-builders/gke-deploy
  #   args:
