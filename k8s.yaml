@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: binary-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: binary-test
+  template:
+    metadata:
+      labels:
+        run: binary-test
+    spec:
+      containers:
+      - name: binary-test
+        image: us-central1-docker.pkg.dev/cloudside-academy/sudhakar-test/test-image:$_TAG
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always
+       
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: binary-test
+  labels:
+    run: binary-test
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: binary-test
