@@ -35,11 +35,11 @@ steps:
       - '-c'
       - gcloud container binauthz attestations create --project="$_PROJECT_ID" --artifact-url="us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image@$(awk 'NR==1{print $1}' sha)" --attestor=projects/$_PROJECT_ID//attestors/"$_ATTESTOR_NAME" --signature-file=./ec_signature --public-key-id="$_PUBILC_KEY_ID" --validate
     entrypoint: bash
-  - name: "gcr.io/cloud-builders/gke-deploy"
+  - name: gcr.io/cloud-builders/gke-deploy
      args:
        - run
        - --filename=your-kubernetes-resource-file
        - --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
        - --location=$_ZONE
        - --cluster=$_CLUSTER_NAME
-    entrypoint: bash
+  
