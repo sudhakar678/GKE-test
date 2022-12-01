@@ -42,8 +42,9 @@ steps:
         gcloud container clusters get-credentials "$_CLUSTER_NAME" --zone
         "$_ZONE" --project "$_PROJECT_ID"
     entrypoint: bash
-  - name: gcr.io/cloud-builders/kubectl
-    args: ['set', 'image', 'deployment/app1', 'us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG']
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=$_ZONE'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
+      - --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
+      - --location=$_ZONE
+      - --cluster=$_CLUSTER_NAME  
