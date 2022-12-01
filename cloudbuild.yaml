@@ -46,5 +46,6 @@ steps:
     args:
       - '-c'
       - kubectl run deployment --namee=binary-test --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image@$(awk 'NR==1{print $1}' sha)
-      
-  
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=$_ZONE'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
