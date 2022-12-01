@@ -37,8 +37,9 @@ steps:
     entrypoint: bash
   - name: "gcr.io/cloud-builders/gke-deploy"
      args:
-     - run
-     - --filename=your-kubernetes-resource-file
-     - --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
-     - --location=$_ZONE
-     - --cluster=$_CLUSTER_NAME
+       - run
+       - --filename=your-kubernetes-resource-file
+       - --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
+       - --location=$_ZONE
+       - --cluster=$_CLUSTER_NAME
+    entrypoint: bash
