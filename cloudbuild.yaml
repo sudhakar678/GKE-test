@@ -43,8 +43,7 @@ steps:
         "$_ZONE" --project "$_PROJECT_ID"
     entrypoint: bash
   - name: gcr.io/cloud-builders/kubectl
-    args:
-      - kubectl run deployment  --image=us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image@$(awk 'NR==1{print $1}' sha)
+    args: ['set', 'image', 'deployment/app1', 'us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=$_ZONE'
       - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME'
