@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment 
 metadata:
   name: binary-test
 spec:
@@ -7,15 +7,19 @@ spec:
   selector:
     matchLabels:
       app: binary-test
+      env: dev
   template:
     metadata:
+      name: binary-test
       labels:
         app: binary-test
+        env: dev
     spec:
       containers:
-        - name: binary-test
-          image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
-          imagePullPolicy: Always
+      - name: binary-test
+        image: us-central1-docker.pkg.dev/$_PROJECT_ID/$_REPO_NAME/test-image:$_TAG
+        ports:
+         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
