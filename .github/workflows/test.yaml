@@ -30,11 +30,17 @@ jobs:
 
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
+      
+      - name: Installing packages
+        run: |-
+          gcloud components install gke-gcloud-auth-plugin 
         
       - name: Configure Docker
         run: |-
           gcloud --quiet auth configure-docker
       - name: Get GKE Credentials
+        env :
+          USE_GCLOUD_AUTH_PLUGIN: true
         run: |-
           gcloud container clusters get-credentials sudhakar-test --zone us-central1-c --project cloudside-academy
       - name: Build Docker Image
