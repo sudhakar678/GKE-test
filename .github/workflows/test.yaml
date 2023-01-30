@@ -35,7 +35,7 @@ jobs:
           gcloud --quiet auth configure-docker
       - name: Get GKE Credentials
         run: |-
-          gcloud container clusters get-credentials "GKE_CLUSTER" --zone "GKE_ZONE"
+          gcloud container clusters get-credentials sudhakar-test --zone us-central1-c --project cloudside-academy
       - name: Build Docker Image
         run: |-
           docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$" .
