@@ -3,7 +3,7 @@ name: Build and Deploy to GKE DEV
 on:
   push:
     branches:
-      - coupon-service-dev
+      - main
 
 env:
   PROJECT_ID: cloudside-academy
