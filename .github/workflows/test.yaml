@@ -54,7 +54,7 @@ jobs:
           PAT: ${{secrets.ENV_PAT}}
         run: |-
           git clone https://${PAT}@github.com/sudhakar678/github-action-gke.git
-          cd github-acction-gke
+          cd github-action-gke
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo the new image tag will be $git_hash
           tag=$(cat deployment.yaml | grep 'gcr.io/cloudside-academy/github-action-test:' | awk -F: '{print $0=$3}')
