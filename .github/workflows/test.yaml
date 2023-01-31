@@ -9,6 +9,7 @@ env:
   PROJECT_ID: cloudside-academy
   GKE_CLUSTER: sudhakar-test
   GKE_ZONE: us-central1-c
+  REPO_NAME: sudhakar-test
   IMAGE: github-action-test
   TAG: latest
 
@@ -56,4 +57,4 @@ jobs:
         run: |-
           ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$TAG
           ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/nginx-svc 
+          kubectl rollout status deployment/nginx
