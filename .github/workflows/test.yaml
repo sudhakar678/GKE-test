@@ -53,7 +53,7 @@ jobs:
         env:
           PAT: ${{secrets.ENV_PAT}}
         run: |-
-          git clonee https://${PAT}@github.com/sudhakar678/github-action-gke.git
+          git clone https://${PAT}@github.com/sudhakar678/github-action-gke.git
           cd github-acction-gke
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo the new image tag will be $git_hash
