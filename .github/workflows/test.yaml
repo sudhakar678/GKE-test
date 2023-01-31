@@ -53,16 +53,16 @@ jobs:
         env:
           PAT: ${{secrets.ENV_PAT}}
         run: |-
-          git clone https://${PAT}@github.com/apnaklub-tech/k8s-env.git -b credit-service-dev
-          cd k8s-env
+          git clonee https://${PAT}@github.com/sudhakar678/github-action-gke.git
+          cd github-acction-gke
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           echo the new image tag will be $git_hash
-          tag=$(cat deployment.yaml | grep 'asia-south1-docker.pkg.dev/ak-dev-apps/repo-dev-apps/credit-service-dev:' | awk -F: '{print $0=$3}')
+          tag=$(cat deployment.yaml | grep 'gcr.io/cloudside-academy/github-action-test:' | awk -F: '{print $0=$3}')
           echo the old image tag is $tag
           sed -i 's/'"${tag}"'/'"${git_hash}"'/' deployment.yaml
-          git config --global user.name "umesh-cloudside"
-          git config --global user.email "umesh@thecloudside.com"
-          git remote set-url origin https://umesh-cloudside:${PAT}@github.com/apnaklub-tech/k8s-env.git
+          git config --global user.name "sudhakar678"
+          git config --global user.email "sudhadhakar88@gmail.com"
+          git remote set-url origin https://sudhakar678:${PAT}@github.com/sudhakar678/github-action-gke.git
           git add deployment.yaml
           git commit -m "image version updated in deployment file"
           git push
