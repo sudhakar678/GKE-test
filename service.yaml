@@ -9,4 +9,4 @@ spec:
     name: http
     targetPort: 80
   selector:
-    app: nginx
+    app: nginx-svc
