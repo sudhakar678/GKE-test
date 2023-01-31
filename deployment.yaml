@@ -12,7 +12,7 @@ spec:
         app: nginx-svc
     spec:
       containers:
-      - image: gcr.io/cloudside-academy/github-action-test:$(git rev-parse --short "$GITHUB_SHA")
+      - image: gcr.io/cloudside-academy/github-action-test:latest
         name: nginx-svc
         ports:
         - containerPort: 80
