@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-svc 
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-svc
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-svc
     spec:
       containers:
       - image: gcr.io/cloudside-academy/github-action-test:$(git rev-parse --short "$GITHUB_SHA")
-        name: nginx
+        name: nginx-svc
         ports:
         - containerPort: 80
           name: http
