@@ -51,7 +51,7 @@ jobs:
           docker push "gcr.io/$PROJECT_ID/$IMAGE:$(git rev-parse --short "$GITHUB_SHA")"
       - name: push image tag to env repo
         env:
-          PAT: ${{secrets.ENV_PAT}}
+          PAT: ${{secrets.PAT}}
         run: |-
           git clone https://${PAT}@github.com/sudhakar678/github-action-gke.git
           cd github-action-gke
